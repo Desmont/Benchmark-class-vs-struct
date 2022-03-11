@@ -28,4 +28,18 @@ public class ClassVsEnum
         var result = new RegisterMobileDeviceCommandClass(Guid.NewGuid(), DeviceToken, Platform, DeviceModel);
         return result;
     }
+    
+    [Benchmark]
+    public RegisterMobileDeviceCommandStruct StructBoxedTest()
+    {
+        var result = (object)new RegisterMobileDeviceCommandStruct(Guid.NewGuid(), DeviceToken, Platform, DeviceModel);
+        return (RegisterMobileDeviceCommandStruct)result;
+    }
+    
+    [Benchmark]
+    public RegisterMobileDeviceCommandClass ClassBoxedTest()
+    {
+        var result = (object)new RegisterMobileDeviceCommandClass(Guid.NewGuid(), DeviceToken, Platform, DeviceModel);
+        return (RegisterMobileDeviceCommandClass)result;
+    }
 }
